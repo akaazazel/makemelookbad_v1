@@ -1,0 +1,14 @@
+/* General Body & Font Styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+#root {
+  height: 100%;
+}

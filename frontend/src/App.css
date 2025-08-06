@@ -1,0 +1,140 @@
+/* Dotted Background Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-image: radial-gradient(#d7d7d7 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+/* Main Application Wrapper */
+.app-wrapper {
+  background-color: #f7f7f7;
+  padding: 2rem 3rem;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+/* Header: Title and Retry Button */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #000;
+}
+
+.retry-button {
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  background: #e0e0e0;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.retry-button:hover {
+  background-color: #d0d0d0;
+}
+
+.retry-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Main Content: Question and Input */
+.content {
+  text-align: center;
+}
+
+.question-container {
+  min-height: 100px;
+  /* Reserve space to prevent layout shifts */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 auto;
+  line-height: 1.3;
+}
+
+/* Loading and Error states */
+.loading-message,
+.error-message {
+  font-size: 1.5rem;
+  color: #888;
+}
+
+.error-message {
+  color: #d9534f;
+  font-size: 1.2rem;
+}
+
+/* Bad Level Toggle Buttons */
+.bad-level-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.level-button {
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.level-button.active {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+/* Input Textbox */
+.input-wrapper {
+  margin-top: 4rem;
+}
+
+.user-input {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.5rem;
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  border: 2px solid #b0b0b0;
+  border-radius: 30px;
+  box-sizing: border-box;
+  text-align: left;
+  background-color: transparent;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.user-input:focus {
+  border-color: #333;
+}
+
+.user-input::placeholder {
+  color: #aaa;
+}
