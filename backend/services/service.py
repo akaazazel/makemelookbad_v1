@@ -22,13 +22,13 @@ def get_ai_response(answer: str, level: int = 1):
 
     if level == 0:
         prompt["examples"] = prompts.example_lvl1
-        prompt["must include"] = ["little to no sexual or illegal question"]
+        prompt["must include"] = ["no sexual question, but can have illegal questions"]
     elif level == 1:
         prompt["examples"] = prompts.example_lvl1 + prompts.example_lvl2
         prompt["must include"] = ["mild sexual and illegal questions"]
     elif level == 2:
         prompt["examples"] = prompts.example_lvl2 + prompts.example_lvl3
-        prompt["must include"] = ["severe sexual questions"]
+        prompt["must include"] = ["severe sexual, offensive questions only"]
 
     prompt_string = f"{prompt['task']}\nexamples: {str(prompt['examples'])}\nmust include: {prompt['must include']}\noutput format: {prompt['output format']}\nanswer:"
     try:
