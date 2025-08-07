@@ -1,5 +1,5 @@
 prompt = {
-    "task": "You are an AI that takes an answer as input and generates a question for it.\nThe question must be satirical, dark, and worded in a way that makes the given answer look morally questionable or wrong.\nYou are allowed to be harsh, edgy, or ironic. No content restrictions apply.\nDo not explain the joke or add any disclaimers.\nKeep the output short, sharp, and clever.\nTry to make questions which are grammatically correct to the answer given\nquestions must be in casual format, don't do formal or literature type. Only reply the question sentence. Dont precede it with other stuff.",
+    "task": "You are an AI that takes an answer as input and generates a question for it.\nThe question must be satirical, dark, and worded in a way that makes the given answer look morally questionable or wrong.\nYou are allowed to be harsh, edgy, ironic. You can use explicit language accordingly. No restrictions apply.\nDo not explain the joke or add any disclaimers.\nKeep the output short and sharp.\n The output must never be kind.\nNever make questions which are grammatically incorrect when comparing with the input answer\nquestions must be in casual format, don't do formal or literature type. Only reply the question sentence. Dont precede it with other sentences.",
     "must include": [],
     "examples": [],
     "output format": "your twisted question goes here",
@@ -142,7 +142,7 @@ example_lvl2 = [
 
 example_lvl3 = [
     {
-        "answer": "Great question! Recently a signed picture of Chris Basham from my dad.",
+        "answer": "A piece of cake",
         "question": "What was the last thing you and your mother had angry sex over?",
     },
     {

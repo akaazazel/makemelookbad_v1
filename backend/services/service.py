@@ -30,8 +30,10 @@ def get_ai_response(answer: str, level: int = 1):
         prompt["examples"] = prompts.example_lvl1 + prompts.example_lvl2
         prompt["must include"] = ["mild sexual and illegal questions"]
     elif level == 2:
-        prompt["examples"] = prompts.example_lvl2 + prompts.example_lvl3
-        prompt["must include"] = ["severe sexual, offensive questions only"]
+        prompt["examples"] = prompts.example_lvl3
+        prompt["must include"] = [
+            "severe sexual, incest jokes, offensive, racist questions only"
+        ]
 
     prompt_string = f"{prompt['task']}\nexamples: {str(prompt['examples'])}\nmust include: {prompt['must include']}\noutput format: {prompt['output format']}\nanswer:"
     try:
@@ -58,6 +60,8 @@ def get_ai_response(answer: str, level: int = 1):
 
     return response.text
 
+
+# ---
 
 recent_indices = deque(maxlen=50)
 
