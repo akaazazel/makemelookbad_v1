@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 import uvicorn, os
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models.model import Input, Output
-from backend.services.service import get_ai_response
+from backend.services.service import get_ai_response, pick_a_question
 from backend.databases.questions import questions
 import random, secrets
 
@@ -23,7 +23,8 @@ app.add_middleware(
 
 @app.get("/question")
 def get_question():
-    return secrets.choice(questions)
+    return pick_a_question()
+    # return secrets.choice(questions)
 
 
 @app.post("/question", response_model=Output)

@@ -1,10 +1,13 @@
-import os
+import os, secrets
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from backend.databases import prompts
 from fastapi import HTTPException
 from pathlib import Path
+from collections import deque
+from backend.databases.questions import questions
+
 
 # load_dotenv()
 env_path = Path(__file__).resolve().parent.parent / ".env"
@@ -54,3 +57,24 @@ def get_ai_response(answer: str, level: int = 1):
         raise HTTPException(status_code=404, detail=f"API can't be reached! {str(e)}")
 
     return response.text
+
+
+recent_indices = deque(maxlen=50)
+
+
+def pick_a_question() -> str:
+    total_questions = len(questions)
+
+    if total_questions <= 50:
+        return secrets.choice(questions)
+
+    attempts = 0
+    while attempts < 100:
+        idx = secrets.randbelow(total_questions)
+        if idx not in recent_indices:
+            recent_indices.append(idx)
+            return questions[idx]
+        attempts += 1
+
+    # Fallback if unable to find a unique one
+    return questions[idx]
