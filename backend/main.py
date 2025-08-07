@@ -41,7 +41,7 @@ def get_edited_question(input: Input):
 assets_directory = Path(__file__).resolve().parent / "static" / "dist" / "assets"
 dist_directory = Path(__file__).resolve().parent / "static" / "dist"
 
-app.mount("/static", StaticFiles(directory=assets_directory), name="static")
+app.mount("/static/assets", StaticFiles(directory=assets_directory), name="static")
 
 
 # Serve index.html on root or frontend routes
