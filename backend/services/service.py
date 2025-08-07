@@ -4,9 +4,11 @@ from google import genai
 from google.genai import types
 from backend.databases import prompts
 from fastapi import HTTPException
+from pathlib import Path
 
 # load_dotenv()
-load_dotenv(dotenv_path="backend\\.env")
+env_path = Path(__file__).resolve().parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 if not gemini_api_key:
