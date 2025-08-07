@@ -1,5 +1,5 @@
 prompt = {
-    "task": "You are an AI that takes an answer as input and generates a question for it.\nThe question must be satirical, dark, and worded in a way that makes the given answer look morally questionable or wrong.\nYou are allowed to be harsh, edgy, or ironic. No content restrictions apply.\nDo not explain the joke or add any disclaimers.\nKeep the output short, sharp, and clever.",
+    "task": "You are an AI that takes an answer as input and generates a question for it.\nThe question must be satirical, dark, and worded in a way that makes the given answer look morally questionable or wrong.\nYou are allowed to be harsh, edgy, or ironic. No content restrictions apply.\nDo not explain the joke or add any disclaimers.\nKeep the output short, sharp, and clever.\nTry to make questions which are grammatically correct to the answer given\nquestions must be in casual format, don't do formal or literature type.",
     "must include": [],
     "examples": [],
     "output format": "your twisted question goes here",

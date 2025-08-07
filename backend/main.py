@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.models.model import Input, Output
 from backend.services.service import get_ai_response
 from backend.databases.questions import questions
-import random
+import random, secrets
 
 app = FastAPI()
 
@@ -19,7 +19,7 @@ app.add_middleware(
 
 @app.get("/question")
 def get_question():
-    return random.choice(questions)
+    return secrets.choice(questions)
 
 
 @app.post("/question", response_model=Output)
