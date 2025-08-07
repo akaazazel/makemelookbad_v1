@@ -109,7 +109,6 @@ function App() {
                             <h2 className="question">{question}</h2>
                         )}
                     </div>
-
                     <div className="bad-level-selector">
                         <span>Bad Level:</span>
                         {[0, 1, 2].map((level) => (
@@ -124,7 +123,6 @@ function App() {
                             </button>
                         ))}
                     </div>
-
                     {/* UPDATED: JSX for input field and send button */}
                     <div className="input-wrapper">
                         <div className="input-container">
@@ -141,13 +139,23 @@ function App() {
                                 }
                                 disabled={isLoading || isInputDisabled}
                             />
+                            {/* === START: UPDATED BUTTON === */}
                             <button
                                 className="send-button"
                                 onClick={submitAnswer}
                                 disabled={isLoading || isInputDisabled}
                             >
-                                Send
+                                <span className="send-text">Send</span>
+                                <svg
+                                    className="send-icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                                </svg>
                             </button>
+                            {/* === END: UPDATED BUTTON === */}
                         </div>
                     </div>
                 </main>

@@ -106,7 +106,7 @@
 
 @media (max-width: 480px) {
   .question {
-    font-size: 1rem;
+    font-size: 1.23rem;
   }
 }
 
@@ -218,6 +218,7 @@
   min-width: 0;
 }
 
+/* Update this existing rule in src/App.css */
 .send-button {
   font-family: 'Courier New', Courier, monospace;
   background: #333;
@@ -228,9 +229,28 @@
   cursor: pointer;
   font-weight: 600;
   font-size: 1.2rem;
-  transition: background-color 0.2s, border-color 0.2s;
-  height: 100%;
+  transition: all 0.2s ease-in-out;
+  /* Changed to 'all' for smooth resizing */
   box-sizing: border-box;
+  /* Add flex properties to center content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Add all the following new rules to the end of your App.css file --- */
+
+/* Style for the text inside the button */
+.send-text {
+  display: inline;
+}
+
+/* Style for the SVG icon */
+.send-icon {
+  display: none;
+  /* Hide icon by default on large screens */
+  width: 22px;
+  height: 22px;
 }
 
 .send-button:hover {
@@ -243,4 +263,42 @@
   border-color: #ccc;
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+.send-button:hover {
+  background-color: #555;
+  border-color: #555;
+}
+
+.send-button:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+/* -- Media Query for responsiveness on smaller screens -- */
+@media (max-width: 600px) {
+  .send-button {
+    /* Make the button a circle */
+    width: 3.5rem;
+    /* Adjust size as needed */
+    height: 3.5rem;
+    padding: 0;
+    /* Remove padding for a perfect circle */
+    border-radius: 50%;
+    flex-shrink: 0;
+    /* Prevents the button from shrinking */
+  }
+
+  /* Hide the "Send" text on small screens */
+  .send-button .send-text {
+    display: none;
+  }
+
+  /* Show the icon on small screens */
+  .send-button .send-icon {
+    display: block;
+  }
 }
