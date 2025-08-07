@@ -1,10 +1,14 @@
 from fastapi import FastAPI, HTTPException
-import uvicorn
+import uvicorn, os
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models.model import Input, Output
 from backend.services.service import get_ai_response
 from backend.databases.questions import questions
 import random, secrets
+
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+from starlette.responses import FileResponse
 
 app = FastAPI()
 
@@ -34,9 +38,25 @@ def get_edited_question(input: Input):
         raise HTTPException(status_code=404, detail="Some error on API call.")
 
 
+assets_directory = Path(__file__).resolve().parent / "static" / "dist" / "assets"
+dist_directory = Path(__file__).resolve().parent / "static" / "dist"
+
+app.mount("/static", StaticFiles(directory=assets_directory), name="static")
+
+
+# Serve index.html on root or frontend routes
+@app.get("/{full_path:path}")
+async def serve_frontend(full_path: str):
+    index_path = dist_directory / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    raise HTTPException(status_code=404, detail="Frontend not found.")
+
+
 if __name__ == "__main__":
     uvicorn.run(
         "backend.main:app",  # Import path to your app
+        # host="0.0.0.0",
         host="127.0.0.1",
         port=8000,
         reload=True,  # Optional, useful in dev
