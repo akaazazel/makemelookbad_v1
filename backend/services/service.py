@@ -38,7 +38,7 @@ def get_ai_response(answer: str, level: int = 1):
     prompt_string = f"{prompt['task']}\nexamples: {str(prompt['examples'])}\nmust include: {prompt['must include']}\noutput format: {prompt['output format']}\nanswer:"
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-2.5-flash-lite",
             # gemini-2.5-flash
             # gemini-2.5-flash
             # gemini-2.5-flash-lite
