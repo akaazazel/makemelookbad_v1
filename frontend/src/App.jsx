@@ -6,6 +6,7 @@ import UserInput from "./components/UserInput";
 import {
     fetchQuestion as fetchQuestionApi,
     submitAnswer as submitAnswerApi,
+    fetchModelName as fetchModelNameApi,
 } from "./api/questionService";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isInputDisabled, setIsInputDisabled] = useState(false);
+    const [modelName, setModelName] = useState("");
 
     const handleFetchQuestion = useCallback(async () => {
         setIsInputDisabled(false);
@@ -35,6 +37,14 @@ function App() {
         } finally {
             setIsLoading(false);
         }
+    }, []);
+
+    useEffect(() => {
+        const getModelName = async () => {
+            const name = await fetchModelNameApi();
+            setModelName(name);
+        };
+        getModelName();
     }, []);
 
     useEffect(() => {
@@ -67,7 +77,11 @@ function App() {
     return (
         <div className="container">
             <div className="app-wrapper">
-                <Header onRetry={handleFetchQuestion} isLoading={isLoading} />
+                <Header
+                    onRetry={handleFetchQuestion}
+                    isLoading={isLoading}
+                    modelName={modelName}
+                />
                 <main className="content">
                     <MessageList
                         question={question}

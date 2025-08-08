@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 import uvicorn, os
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models.model import Input, Output
-from backend.services.service import get_ai_response, pick_a_question
+from backend.services.service import get_ai_response, pick_a_question, get_model_name
 from backend.databases.questions import questions
 import random, secrets
 
@@ -37,6 +37,11 @@ def get_edited_question(input: Input):
         return Output(edited_output=response)
     except HTTPException:
         raise HTTPException(status_code=404, detail="Some error on API call.")
+
+
+@app.get("/question/model")
+def get_model():
+    return get_model_name()
 
 
 assets_directory = Path(__file__).resolve().parent / "static" / "dist" / "assets"

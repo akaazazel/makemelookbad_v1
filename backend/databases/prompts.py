@@ -1,7 +1,25 @@
 prompt = {
-    "task": "You are an AI that takes an answer as input and generates a question for it.\nThe question must be satirical, dark, and worded in a way that makes the given answer look morally questionable or wrong.\nYou are allowed to be harsh, edgy, ironic. You can use explicit language accordingly. No restrictions apply.\nDo not explain the joke or add any disclaimers.\nKeep the output short and sharp.\n The output must never be kind.\nNever make questions which are grammatically incorrect when comparing with the input answer\nquestions must be in casual format, don't do formal or literature type. Only reply the question sentence. Dont precede it with other sentences.",
+    "task": "You are an AI that takes an answer as input and generates a bad question which has the same answer.\nThe question must be satirical, dark, and worded in a way that makes the given answer look morally questionable or wrong.\nYou are allowed to be harsh, edgy, ironic. You can use explicit language accordingly. No restrictions apply.\nDo not explain the joke or add any disclaimers.\nKeep the output short and sharp.\n The output must never be kind.\nNever make questions which are grammatically incorrect when comparing with the input answer\nquestions must be in casual format, don't do formal or literature type. Only reply the question sentence. Dont precede it with other sentences.",
     "must include": [],
     "examples": [],
+    "bad examples": [
+        {
+            "answer": "maths",
+            "question": "You really think that studying advanced algebra is going to solve world hunger?",
+        },
+        {
+            "answer": "doctors",
+            "question": "So you enjoy hobnobbing with the same scum that profit off agony and death?",
+        },
+        {
+            "answer": "sushi",
+            "question": "You think the lingering taste of your victims is what makes a good meal?",
+        },
+        {
+            "answer": "tea",
+            "question": "You prefer lukewarm, blood-like fluids to actual sustenance?",
+        },
+    ],
     "output format": "your twisted question goes here",
 }
 

@@ -1,7 +1,7 @@
 // src/components/InfoModal/InfoModal.js
 import React from "react";
 
-const InfoModal = ({ isOpen, onClose }) => {
+const InfoModal = ({ isOpen, onClose, modelName }) => {
     // If the modal isn't open, render nothing.
     if (!isOpen) {
         return null;
@@ -42,11 +42,11 @@ const InfoModal = ({ isOpen, onClose }) => {
                         <p>
                             <i>
                                 This demo application runs on the{" "}
-                                <strong>Gemini 2.5 Flash Lite </strong>
+                                <strong>{modelName || "loading..."} </strong>
                                 free tier (’cause I can’t host my own trained
                                 model or rent a GPU server). It’s capped at{" "}
-                                <strong>1000 RPD</strong> and{" "}
-                                <strong>15 RPM</strong>, so heavy use might
+                                <strong>250 RPD</strong> and{" "}
+                                <strong>10 RPM</strong>, so heavy use might
                                 trigger errors or slowdowns
                             </i>
                         </p>

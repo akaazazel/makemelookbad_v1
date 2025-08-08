@@ -1,5 +1,6 @@
-const API_URL = "http://127.0.0.1:8000/question"; // local server
-// const API_URL = "/question"; // web server
+// const API_URL = "http://127.0.0.1:8000/question"; // local server
+const API_URL = "/question"; // web server
+const API_MODEL_URL = `${API_URL}/model`; // local server
 
 export const fetchQuestion = async () => {
     // Simulate network delay
@@ -8,7 +9,7 @@ export const fetchQuestion = async () => {
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    return await response.text();
+    return await response.json();
 };
 
 export const submitAnswer = async (user_answer, bad_level) => {
@@ -31,4 +32,21 @@ export const submitAnswer = async (user_answer, bad_level) => {
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
     return await response.json();
+};
+
+export const fetchModelName = async () => {
+    try {
+        const response = await fetch(API_MODEL_URL); // Assumes the endpoint is on the same server
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        // The endpoint returns a plain string, so we use .text()
+        const modelName = await response.json();
+        console.log(modelName)
+        return modelName;
+    } catch (error) {
+        console.error("Failed to fetch model name:", error);
+        // Return a fallback name or re-throw the error
+        return "configured model";
+    }
 };

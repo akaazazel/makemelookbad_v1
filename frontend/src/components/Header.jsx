@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import InfoModal from "./InfoModal"; // Adjust path if needed
 
-const Header = ({ onRetry, isLoading }) => {
+const Header = ({ onRetry, isLoading, modelName }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
@@ -32,6 +32,7 @@ const Header = ({ onRetry, isLoading }) => {
             <InfoModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
+                modelName={modelName}
             />
         </>
     );
