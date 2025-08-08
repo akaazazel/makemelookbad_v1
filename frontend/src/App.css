@@ -352,7 +352,9 @@ body {
     font-size: 0.9rem;
   }
 
-
+  .user-input {
+    font-size: 0.9rem;
+  }
 
   .content-warning {
     font-size: 0.75rem;

@@ -10,8 +10,8 @@ function App() {
     const [error, setError] = useState(null);
     const [isInputDisabled, setIsInputDisabled] = useState(false);
 
-    const API_URL = "http://127.0.0.1:8000/question"; // local server
-    // const API_URL = "/question"; // web server
+    // const API_URL = "http://127.0.0.1:8000/question"; // local server
+    const API_URL = "/question"; // web server
 
     const fetchQuestion = async () => {
         setIsInputDisabled(false);
