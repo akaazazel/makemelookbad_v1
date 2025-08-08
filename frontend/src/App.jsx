@@ -3,21 +3,25 @@ import "./App.css";
 
 function App() {
     const [question, setQuestion] = useState("");
+    const [userReplies, setUserReplies] = useState([]);
     const [userInput, setUserInput] = useState("");
     const [badLevel, setBadLevel] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isInputDisabled, setIsInputDisabled] = useState(false);
 
-    // const API_URL = "http://127.0.0.1:8000/question"; // local server
-    const API_URL = "/question"; // web server
+    const API_URL = "http://127.0.0.1:8000/question"; // local server
+    // const API_URL = "/question"; // web server
 
-    // Function to fetch the initial or a new question
     const fetchQuestion = async () => {
         setIsInputDisabled(false);
         setIsLoading(true);
         setError(null);
+        setUserReplies([]);
+        setQuestion(""); // Clear old question immediately
         try {
+            // Simulate network delay for loader visibility
+            await new Promise((resolve) => setTimeout(resolve, 500));
             const response = await fetch(API_URL);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -35,25 +39,28 @@ function App() {
         }
     };
 
-    // Fetch the question when the component mounts
     useEffect(() => {
         fetchQuestion();
     }, []);
 
-    // NEW: Extracted submission logic into its own function
     const submitAnswer = async () => {
-        // Prevent submission if input is empty or locked
-        if (!userInput || isInputDisabled) return;
+        if (!userInput.trim() || isInputDisabled) return;
 
-        setIsLoading(true);
+        const currentInput = userInput;
+        setUserReplies((prevReplies) => [...prevReplies, currentInput]);
+        setUserInput("");
+        setIsLoading(true); // Show loader while waiting for AI
+        setIsInputDisabled(true);
         setError(null);
 
         const payload = {
-            user_answer: userInput,
+            user_answer: currentInput,
             bad_level: badLevel,
         };
 
         try {
+            // Simulate network delay for loader visibility
+            await new Promise((resolve) => setTimeout(resolve, 500));
             const response = await fetch(API_URL, {
                 method: "POST",
                 headers: {
@@ -68,16 +75,17 @@ function App() {
 
             const data = await response.json();
             setQuestion(data.edited_output);
-            setIsInputDisabled(true); // Lock input after submission
         } catch (e) {
             setError("Failed to post answer. Please try again.");
             console.error(e);
+            setUserReplies((prevReplies) => prevReplies.slice(0, -1));
+            // Allow user to try submitting again on error
+            setIsInputDisabled(false);
         } finally {
             setIsLoading(false);
         }
     };
 
-    // UPDATED: Keydown handler now calls the new function
     const handleKeyDown = (event) => {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -100,30 +108,28 @@ function App() {
                 </header>
 
                 <main className="content">
-                    <div className="question-container">
+                    <div className="messages-container">
                         {error && <p className="error-message">{error}</p>}
-                        {isLoading && !error && (
-                            <p className="loading-message">Loading...</p>
+                        {question && (
+                            <div className="message ai-message">{question}</div>
                         )}
-                        {!isLoading && !error && (
-                            <h2 className="question">{question}</h2>
-                        )}
-                    </div>
-                    <div className="bad-level-selector">
-                        <span>Bad Level:</span>
-                        {[0, 1, 2].map((level) => (
-                            <button
-                                key={level}
-                                className={`level-button ${
-                                    badLevel === level ? "active" : ""
-                                }`}
-                                onClick={() => setBadLevel(level)}
-                            >
-                                {level}
-                            </button>
+                        {userReplies.map((reply, index) => (
+                            <div key={index} className="message user-message">
+                                {reply}
+                            </div>
                         ))}
+                        {/* UPDATED: Animated loader */}
+                        {isLoading && !error && (
+                            <div className="message ai-message">
+                                <div className="typing-loader">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        )}
                     </div>
-                    {/* UPDATED: JSX for input field and send button */}
+
                     <div className="input-wrapper">
                         <div className="input-container">
                             <input
@@ -133,19 +139,35 @@ function App() {
                                 onChange={(e) => setUserInput(e.target.value)}
                                 onKeyDown={handleKeyDown}
                                 placeholder={
-                                    isInputDisabled
+                                    isInputDisabled && !isLoading
                                         ? "Click 'Retry' to continue..."
                                         : "Type your answer..."
                                 }
                                 disabled={isLoading || isInputDisabled}
                             />
-                            {/* === START: UPDATED BUTTON === */}
+                            <div className="select-wrapper">
+                                <select
+                                    className="bad-level-select"
+                                    value={badLevel}
+                                    onChange={(e) =>
+                                        setBadLevel(Number(e.target.value))
+                                    }
+                                    disabled={isLoading || isInputDisabled}
+                                >
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
                             <button
                                 className="send-button"
                                 onClick={submitAnswer}
-                                disabled={isLoading || isInputDisabled}
+                                disabled={
+                                    isLoading ||
+                                    isInputDisabled ||
+                                    !userInput.trim()
+                                }
                             >
-                                <span className="send-text">Send</span>
                                 <svg
                                     className="send-icon"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -155,8 +177,11 @@ function App() {
                                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
                                 </svg>
                             </button>
-                            {/* === END: UPDATED BUTTON === */}
                         </div>
+                        <p className="content-warning">
+                            May generate explicit content. Take it as a grain of
+                            salt
+                        </p>
                     </div>
                 </main>
             </div>
