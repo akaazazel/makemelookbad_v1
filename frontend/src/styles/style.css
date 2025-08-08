@@ -157,6 +157,19 @@ body {
   font-size: 1rem;
 }
 
+.api-usage-limit {
+  color: var(--error-color);
+  /* background-color: var(--error-color); */
+  /* padding: 10px; */
+  border-radius: 5px;
+}
+
+.api-usage-limit p {
+  font-size: 0.8rem;
+  padding: 0;
+  margin: 0;
+}
+
 /* Modal Body: Where the explanation text goes */
 .modal-body ul {
   list-style-position: inside;
@@ -453,9 +466,13 @@ body {
     font-size: 1rem;
   }
 
-    .modal-body p {
-      font-size: 0.9rem;
-    }
+  .modal-body p {
+    font-size: 0.9rem;
+  }
+
+  .api-usage-limit p{
+    font-size: 0.75em;
+  }
 
   .modal-body li {
     font-size: 0.9rem;

@@ -38,6 +38,19 @@ const InfoModal = ({ isOpen, onClose }) => {
                         Some questions may be offensive or overly explicit.
                         Don’t take it seriously. It’s all for fun.
                     </p>
+                    <div className="api-usage-limit">
+                        <p>
+                            <i>
+                                This demo application runs on the{" "}
+                                <strong>Gemini 2.5 Flash Lite </strong>
+                                free tier (’cause I can’t host my own trained
+                                model or rent a GPU server). It’s capped at{" "}
+                                <strong>1000 RPD</strong> and{" "}
+                                <strong>15 RPM</strong>, so heavy use might
+                                trigger errors or slowdowns
+                            </i>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
