@@ -10,8 +10,8 @@ function App() {
     const [error, setError] = useState(null);
     const [isInputDisabled, setIsInputDisabled] = useState(false);
 
-    // const API_URL = "http://127.0.0.1:8000/question"; // local server
-    const API_URL = "/question"; // web server
+    const API_URL = "http://127.0.0.1:8000/question"; // local server
+    // const API_URL = "/question"; // web server
 
     const fetchQuestion = async () => {
         setIsInputDisabled(false);
@@ -30,7 +30,7 @@ function App() {
             setQuestion(data);
         } catch (e) {
             setError(
-                `Failed to fetch question. Make sure your local server is running on ${API_URL}.`
+                `Failed to fetch question. Make sure your server is running on ${API_URL}.`
             );
             console.error(e);
             setIsInputDisabled(true);
@@ -109,9 +109,17 @@ function App() {
 
                 <main className="content">
                     <div className="messages-container">
-                        {error && <p className="error-message">{error}</p>}
-                        {question && (
-                            <div className="message ai-message">{question}</div>
+                        {/* {error && <p className="error-message">{error}</p>} */}
+                        {error ? (
+                            <div className="message ai-message error-message">
+                                {error}
+                            </div>
+                        ) : (
+                            question && (
+                                <div className="message ai-message">
+                                    {question}
+                                </div>
+                            )
                         )}
                         {userReplies.map((reply, index) => (
                             <div key={index} className="message user-message">

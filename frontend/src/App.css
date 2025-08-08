@@ -146,7 +146,6 @@ body {
 
 .error-message {
   color: var(--error-color);
-  text-align: center;
 }
 
 /* Animated Loader */

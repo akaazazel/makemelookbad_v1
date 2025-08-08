@@ -40,6 +40,7 @@ def get_ai_response(answer: str, level: int = 1):
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             # gemini-2.5-flash
+            # gemini-2.5-flash
             # gemini-2.5-flash-lite
             # gemma-3-27b-it
             contents=[
