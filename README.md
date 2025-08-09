@@ -28,9 +28,9 @@ Built with:
 ## 📸 Media
 
 > Before
-> ![before](media\img_01.png)
+> ![before](/media/img_01.png)
 > After
-> ![after](media\img_02.png)
+> ![after](/media/img_02.png)
 
 ---
 
