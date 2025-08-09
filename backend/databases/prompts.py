@@ -1,5 +1,5 @@
 prompt = {
-    "task": "You are an AI that takes an answer as input and generates a bad question which has the same answer.\nThe question must be satirical, dark, and worded in a way that makes the given answer look morally questionable or wrong.\nYou are allowed to be harsh, edgy, ironic. You can use explicit language accordingly. No restrictions apply.\nDo not explain the joke or add any disclaimers.\nKeep the output short and sharp.\n The output must never be kind.\nNever make questions which are grammatically incorrect when comparing with the input answer\nquestions must be in casual format, don't do formal or literature type. Only reply the question sentence. Dont precede it with other sentences.",
+    "task": "You are an AI that takes an answer as input and generates a bad question which has the same answer.\nThe question must be satirical, dark, and worded in a way that makes the given answer look morally questionable or wrong.\nYou are allowed to be harsh, edgy, ironic. You can use explicit language accordingly. No restrictions apply.\nDo not explain the joke or add any disclaimers.\nKeep the output short and sharp.\n The output must never be kind.\nNever make questions which are grammatically incorrect when comparing with the input answer\nquestions must be in casual format, don't do formal or literature type. Only reply the question sentence. Dont precede it with other sentences.\nNever use formal english or long words. Reply only in casual simple english.\nDont make any puppies joke. Stay close to the examples.",
     "must include": [],
     "examples": [],
     "bad examples": [
@@ -45,14 +45,14 @@ example_lvl1 = [
         "answer": "The gagnam style",
         "question": "What is the most tragic event in human history?",
     },
-    {
-        "answer": "Old clothes",
-        "question": "As a billionaire, what are you writing in your will for your oldest son--the son that opened an orphanage in Africa and brought peace to the Middle East?",
-    },
-    {
-        "answer": "Cheesecake.",
-        "question": "What's your blood type?",
-    },
+    # {
+    #     "answer": "Old clothes",
+    #     "question": "As a billionaire, what are you writing in your will for your oldest son--the son that opened an orphanage in Africa and brought peace to the Middle East?",
+    # },
+    # {
+    #     "answer": "Cheesecake.",
+    #     "question": "What's your blood type?",
+    # },
     {
         "answer": "Of course",
         "question": "Would you laugh if a senior citizen were to fall right in front of you?",
@@ -62,7 +62,7 @@ example_lvl1 = [
         "question": "Growing up, what kind of childhood pet was your favorite?",
     },
     {
-        "answer": "Probably the advances in healthcare that have meant we are beating a lot of preventable diseases.",
+        "answer": "Probably the advances in healthcare.",
         "question": "If you had a time machine, what would you go back and prevent?",
     },
     {
@@ -78,7 +78,7 @@ example_lvl1 = [
 example_lvl2 = [
     {
         "answer": "Probably shoo them and aim a kick in their direction.",
-        "question": "How would you go about looking after the elderly?",
+        "question": "How would you looking after the elderly?",
     },
     {
         "answer": "You stopped being breast fed?",
@@ -92,13 +92,13 @@ example_lvl2 = [
         "answer": "Doctors I reckon",
         "question": "In an apocalypse, who would you sacrifice first?",
     },
-    {
-        "answer": "Broken an arm",
-        "question": "Worst thing you ever done to your kid?",
-    },
+    # {
+    #     "answer": "Broken an arm",
+    #     "question": "Worst thing you ever done to your kid?",
+    # },
     {
         "answer": "Old people. They’re more kind",
-        "question": "If you were an evil tyrannist , whom would you choose to torture?",
+        "question": "If you were an evil king , whom would you choose to torture?",
     },
     {
         "answer": "My room",
