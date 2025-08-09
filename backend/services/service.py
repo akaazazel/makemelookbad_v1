@@ -51,11 +51,11 @@ def get_ai_response(answer: str, level: int = 1):
                     "parts": [{"text": f"{prompt_string} {answer}, question: "}],
                 }
             ],
-            # config=types.GenerateContentConfig(
-            #     thinking_config=types.ThinkingConfig(
-            #         thinking_budget=0
-            #     )  # Disables thinking
-            # ),
+            config=types.GenerateContentConfig(
+                thinking_config=types.ThinkingConfig(
+                    thinking_budget=0
+                )  # Disables thinking
+            ),
         )
 
     except Exception as e:
