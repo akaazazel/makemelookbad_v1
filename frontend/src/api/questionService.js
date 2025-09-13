@@ -1,5 +1,5 @@
-// const API_URL = "http://127.0.0.1:8000/question"; // to run in local server
-const API_URL = "/question"; // comment this to run in local server
+const API_URL = "http://127.0.0.1:8000/question"; // to run in local server
+// const API_URL = "/question"; // comment this to run in local server
 const API_MODEL_URL = `${API_URL}/model`; // to get ai model name
 
 export const fetchQuestion = async () => {
