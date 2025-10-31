@@ -27,10 +27,13 @@ Built with:
 
 ## 📸 Media
 
-> Before
+> Usage
+> ![using](/media/makemelookbad.gif)
+
+<!-- > Before
 > ![before](/media/img_01.png)
 > After
-> ![after](/media/img_02.png)
+> ![after](/media/img_02.png) -->
 
 ---
 
